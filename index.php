@@ -1,6 +1,13 @@
 <?php
 //prevent direct access
 if (!class_exists('Yii')) die('No access');
+
+//prevent loading yii's jquery since we load one through boilerplate
+Yii::app()->clientScript->scriptMap = array(
+	'jquery.js' => false,
+	'jquery.min.js' => false,
+);
+
 ?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -16,7 +23,7 @@ if (!class_exists('Yii')) die('No access');
        More info: h5bp.com/b/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title></title>
+  <title><?php echo CHtml::encode(Yii::app()->name); ?></title>
   <meta name="description" content="">
 
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
@@ -24,14 +31,14 @@ if (!class_exists('Yii')) die('No access');
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
   
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
   <!-- All JavaScript at the bottom, except this Modernizr build.
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+  <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 
 <body>
@@ -50,12 +57,12 @@ if (!class_exists('Yii')) die('No access');
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  <script>window.jQuery || document.write('<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
 
   <!-- scripts concatenated and minified via build script -->
-  <script defer src="js/plugins.js"></script>
-  <script defer src="js/script.js"></script>
+  <script defer src="<?php echo Yii::app()->theme->baseUrl; ?>/js/plugins.js"></script>
+  <script defer src="<?php echo Yii::app()->theme->baseUrl; ?>/js/script.js"></script>
   <!-- end scripts -->
 
 

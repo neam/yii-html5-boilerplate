@@ -1,3 +1,7 @@
+<?php
+//prevent direct access
+if (!class_exists('Yii')) die('No access');
+?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->

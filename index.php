@@ -65,15 +65,21 @@ Yii::app()->clientScript->scriptMap = array(
   <script defer src="<?php echo Yii::app()->theme->baseUrl; ?>/js/script.js"></script>
   <!-- end scripts -->
 
-
+  <?php
+  if (isset(Yii::app()->params['google-analytics-site-id'])):
+  ?>
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
        mathiasbynens.be/notes/async-analytics-snippet -->
   <script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    var _gaq=[['_setAccount','<?php echo Yii::app()->params['google-analytics-site-id']; ?>'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
+  <?php
+  endif;
+  ?>
+
 
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
